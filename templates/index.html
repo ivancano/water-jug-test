@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>{% block title %} Set X, Y, and Z values {% endblock %}</h2>
+        <form method="post" class="input-form">
+            <div class="form-group">
+                <label for="x">X:</label>
+                <input type="text" name="x" id="x" class="form-control" value="{{ request.form['x'] }}">
+            </div>
+            <div class="form-group">
+                <label for="y">Y:</label>
+                <input type="text" name="y" id="y" class="form-control" value="{{ request.form['y'] }}">
+            </div>
+            <div class="form-group">
+                <label for="z">Z:</label>
+                <input type="text" name="z" id="z" class="form-control" value="{{ request.form['z'] }}">
+            </div>
+            <div class="container-button">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        {% if actions|length > 0 %}
+        <h3>Solution</h3>
+            <ul class="solution-list">
+                {% for action in actions %}
+                    <li>{{ action }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if error %}
+        <div class="error">
+            <h3>Error: {{ error }}</h3>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
