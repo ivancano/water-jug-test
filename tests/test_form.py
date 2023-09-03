@@ -15,7 +15,7 @@ def test_index_post_valid_input(client):
     data = {'x': 3, 'y': 5, 'z': 4}
     response = client.post('/', data=data)
     assert response.status_code == 200
-    assert b'Action' in response.data
+    assert b'Solution' in response.data
 
 def test_index_post_no_solution_input(client):
     data = {'x': 2, 'y': 5, 'z': 0}

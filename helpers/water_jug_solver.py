@@ -19,16 +19,16 @@ class WaterJugSolver:
                 return True
             
             possible_actions = [
-                (self.x, current_y), 
-                (current_x, self.y), 
-                (0, current_y), 
-                (current_x, 0),
-                (min(current_x + current_y, self.x), max(0, current_x + current_y - self.x)),
-                (max(0, current_x + current_y - self.y), min(current_x + current_y, self.y))
+                ("Fill X", self.x, current_y),
+                ("Fill Y", current_x, self.y),
+                ("Empty X", 0, current_y),
+                ("Empty Y", current_x, 0),
+                ("Transfer X to Y", max(0, current_x + current_y - self.y), min(current_x + current_y, self.y)),
+                ("Transfer Y to X", min(current_x + current_y, self.x), max(0, current_x + current_y - self.x))
             ]
             
-            for action_x, action_y in possible_actions:
-                actions.append((action_x, action_y))
+            for action_name, action_x, action_y in possible_actions:
+                actions.append({"action": action_name, "x": action_x, "y": action_y})
                 if dfs(action_x, action_y):
                     return True
                 actions.pop()

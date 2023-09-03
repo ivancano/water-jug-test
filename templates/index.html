@@ -20,13 +20,18 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
-        {% if actions|length > 0 %}
         <h3>Solution</h3>
+        {% if solution != None and solution|length > 0 %}
             <ul class="solution-list">
-                {% for action in actions %}
-                    <li>{{ action }}</li>
+                {% for action in solution %}
+                    <li><strong>Action:</strong> {{ action['action'] }}</li>
+                    <li></strong>X:</strong> {{ action['x'] }}</li>
+                    <li></strong>Y:</strong> {{ action['y'] }}</li>
+                    <hr>
                 {% endfor %}
             </ul>
+        {% elif solution != None and solution|length == 0 %}
+            <p>No Solution.</p>
         {% endif %}
         {% if error %}
         <div class="error">

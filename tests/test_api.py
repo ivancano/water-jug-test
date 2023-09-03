@@ -14,7 +14,7 @@ def test_api_get(client):
     assert response.status_code == 200
     data = json.loads(response.data)
     assert 'parameters' in data
-    assert 'actions' in data
+    assert 'solution' in data
 
 def test_api_no_solution_input(client):
     query_parameters = {'x': 2, 'y': 5, 'z': 0}
@@ -22,8 +22,8 @@ def test_api_no_solution_input(client):
     assert response.status_code == 200
     data = json.loads(response.data)
     assert 'parameters' in data
-    assert 'actions' in data
-    assert 'No Solution.' in data['actions']
+    assert 'solution' in data
+    assert 'No Solution.' in data['solution']
 
 def test_api_invalid_input(client):
     query_parameters = {'x': 'invalid', 'y': 5, 'z': 4}
