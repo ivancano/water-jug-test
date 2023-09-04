@@ -34,7 +34,7 @@ def api():
             raise TypeError()
         solverInstance = WaterJugSolver(x, y, z)
         solution = solverInstance.solver()
-        if len(solution) == 0:
+        if solution == None:
             solution = "No Solution."
         return jsonify(
             parameters={

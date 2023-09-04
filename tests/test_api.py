@@ -17,7 +17,7 @@ def test_api_get(client):
     assert 'solution' in data
 
 def test_api_no_solution_input(client):
-    query_parameters = {'x': 2, 'y': 5, 'z': 0}
+    query_parameters = {'x': 4, 'y': 4, 'z': 3}
     response = client.get('/api', query_string=query_parameters)
     assert response.status_code == 200
     data = json.loads(response.data)
